@@ -28,7 +28,6 @@ setup(
 		'numpy',
 		'scipy',		# for phash
 		'pillow',		# or PIL
-		'PyWavelets',  # for whash
 	],
 	test_suite='tests',
 	tests_require=['pytest>=3'],

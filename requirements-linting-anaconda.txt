@@ -5,4 +5,3 @@ mccabe
 pillow
 numpy
 scipy
-pywavelets
