@@ -53,11 +53,6 @@ class Test(TestImageHash):
 		known_hash = '0026273b2b19550e'
 		self.assertEqual(str(result_hash), known_hash)
 
-	def test_color_hash(self):
-		result_hash = imagehash.colorhash(self.image)
-		known_hash = '07007000000'
-		self.assertEqual(str(result_hash), known_hash)
-
 	def test_crop_resistant_hash(self):
 		result_hash = imagehash.crop_resistant_hash(self.peppers)
 		if _pillow_has_convert_fix():

@@ -12,7 +12,6 @@ hashfuncs = [
 	('ahash', imagehash.average_hash),
 	('phash', imagehash.phash),
 	('dhash', imagehash.dhash),
-	('colorhash', imagehash.colorhash),
 ]
 
 
@@ -45,10 +44,9 @@ def with_ztransform_preprocess(hashfunc, hash_size=8):
 
 
 hashfuncopeners = [(name, image_loader(func)) for name, func in hashfuncs]
-hashfuncopeners += [(name + '-z', with_ztransform_preprocess(func)) for name, func in hashfuncs if name != 'colorhash']
+hashfuncopeners += [(name + '-z', with_ztransform_preprocess(func)) for name, func in hashfuncs]
 
 files = sys.argv[1:]
 for path in files:
 	hashes = [str(hashfuncopener(path)) for name, hashfuncopener in hashfuncopeners]
 	print(path, ' '.join(hashes))
-	# print(path, colorhash(path))

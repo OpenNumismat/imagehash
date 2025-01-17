@@ -51,7 +51,6 @@ Method:
   ahash:          Average hash
   phash:          Perceptual hash
   dhash:          Difference hash
-  colorhash:      HSV color hash
   crop-resistant: Crop-resistant hash
 
 (C) Johannes Buchner, 2013-2017
@@ -65,8 +64,6 @@ Method:
 		hashfunc = imagehash.phash
 	elif hashmethod == 'dhash':
 		hashfunc = imagehash.dhash
-	elif hashmethod == 'colorhash':
-		hashfunc = imagehash.colorhash
 	elif hashmethod == 'crop-resistant':
 		hashfunc = imagehash.crop_resistant_hash
 	else:
