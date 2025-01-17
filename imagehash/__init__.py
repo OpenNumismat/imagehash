@@ -258,6 +258,37 @@ def average_hash(image, hash_size=8, mean=numpy.mean):
 	return ImageHash(diff)
 
 
+######################################################################
+# 1D DCT Type-II
+
+def dct(y):
+    N = len(y)
+    y2 = numpy.empty(2*N,float)
+    y2[:N] = y[:]
+    y2[N:] = y[::-1]
+
+    c = numpy.fft.rfft(y2)
+    phi = numpy.exp(-1j*numpy.pi*numpy.arange(N)/(2*N))
+    return numpy.real(phi*c[:N])
+
+
+######################################################################
+# 2D DCT
+
+def dct2(y):
+    M = y.shape[0]
+    N = y.shape[1]
+    a = numpy.empty([M,N],float)
+    b = numpy.empty([M,N],float)
+
+    for i in range(M):
+        a[i,:] = dct(y[i,:])
+    for j in range(N):
+        b[:,j] = dct(a[:,j])
+
+    return b
+
+
 def phash(image, hash_size=8, highfreq_factor=4):
 	# type: (Image.Image, int, int) -> ImageHash
 	"""
@@ -270,11 +301,10 @@ def phash(image, hash_size=8, highfreq_factor=4):
 	if hash_size < 2:
 		raise ValueError('Hash size must be greater than or equal to 2')
 
-	import scipy.fftpack
 	img_size = hash_size * highfreq_factor
 	image = image.convert('L').resize((img_size, img_size), ANTIALIAS)
 	pixels = numpy.asarray(image)
-	dct = scipy.fftpack.dct(scipy.fftpack.dct(pixels, axis=0), axis=1)
+	dct = dct2(pixels)
 	dctlowfreq = dct[:hash_size, :hash_size]
 	med = numpy.median(dctlowfreq)
 	diff = dctlowfreq > med
@@ -290,11 +320,10 @@ def phash_simple(image, hash_size=8, highfreq_factor=4):
 
 	@image must be a PIL instance.
 	"""
-	import scipy.fftpack
 	img_size = hash_size * highfreq_factor
 	image = image.convert('L').resize((img_size, img_size), ANTIALIAS)
 	pixels = numpy.asarray(image)
-	dct = scipy.fftpack.dct(pixels)
+	dct = dct2(pixels)
 	dctlowfreq = dct[:hash_size, 1:hash_size + 1]
 	avg = dctlowfreq.mean()
 	diff = dctlowfreq > avg

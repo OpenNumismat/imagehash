@@ -4,4 +4,3 @@ isort
 mccabe
 pillow
 numpy
-scipy

@@ -26,7 +26,6 @@ setup(
 	long_description_content_type='text/x-rst',
 	install_requires=[
 		'numpy',
-		'scipy',		# for phash
 		'pillow',		# or PIL
 	],
 	test_suite='tests',
