@@ -7,7 +7,6 @@ An image hashing library written in Python. ImageHash supports:
 * Average hashing
 * Perceptual hashing
 * Difference hashing
-* Wavelet hashing
 * HSV color hashing (colorhash)
 * Crop-resistant hashing
 
@@ -68,13 +67,11 @@ References
 * Average hashing (`aHashref`_)
 * Perceptual hashing (`pHashref`_)
 * Difference hashing (`dHashref`_)
-* Wavelet hashing (`wHashref`_)
 * Crop-resistant hashing (`crop_resistant_hashref`_)
 
 .. _aHashref: https://www.hackerfactor.com/blog/index.php?/archives/432-Looks-Like-It.html
 .. _pHashref: https://www.hackerfactor.com/blog/index.php?/archives/432-Looks-Like-It.html
 .. _dHashref: https://www.hackerfactor.com/blog/index.php?/archives/529-Kind-of-Like-That.html
-.. _wHashref: https://fullstackml.com/wavelet-image-hash-in-python-3504fdd282b5
 .. _pypi: https://pypi.python.org/pypi/ImageHash
 .. _crop_resistant_hashref: https://ieeexplore.ieee.org/document/6980335
 

@@ -53,11 +53,6 @@ class Test(TestImageHash):
 		known_hash = '0026273b2b19550e'
 		self.assertEqual(str(result_hash), known_hash)
 
-	def test_whash(self):
-		result_hash = imagehash.whash(self.image)
-		known_hash = 'ffd391818181a5e7'
-		self.assertEqual(str(result_hash), known_hash)
-
 	def test_color_hash(self):
 		result_hash = imagehash.colorhash(self.image)
 		known_hash = '07007000000'

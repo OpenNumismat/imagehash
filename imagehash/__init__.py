@@ -134,13 +134,6 @@ class ImageHash:
 
 # dynamic code for typing
 try:
-	# specify allowed values if possible (py3.8+)
-	from typing import Literal
-	WhashMode = Literal['haar', 'db4']  # type: ignore
-except ImportError:
-	WhashMode = str  # type: ignore
-
-try:
 	# enable numpy array typing (py3.7+)
 	import numpy.typing
 	NDArray = numpy.typing.NDArray[numpy.bool_]

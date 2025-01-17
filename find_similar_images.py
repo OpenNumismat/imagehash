@@ -51,8 +51,6 @@ Method:
   ahash:          Average hash
   phash:          Perceptual hash
   dhash:          Difference hash
-  whash-haar:     Haar wavelet hash
-  whash-db4:      Daubechies wavelet hash
   colorhash:      HSV color hash
   crop-resistant: Crop-resistant hash
 
@@ -67,11 +65,6 @@ Method:
 		hashfunc = imagehash.phash
 	elif hashmethod == 'dhash':
 		hashfunc = imagehash.dhash
-	elif hashmethod == 'whash-haar':
-		hashfunc = imagehash.whash
-	elif hashmethod == 'whash-db4':
-		def hashfunc(img):
-			return imagehash.whash(img, mode='db4')
 	elif hashmethod == 'colorhash':
 		hashfunc = imagehash.colorhash
 	elif hashmethod == 'crop-resistant':

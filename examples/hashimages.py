@@ -12,8 +12,6 @@ hashfuncs = [
 	('ahash', imagehash.average_hash),
 	('phash', imagehash.phash),
 	('dhash', imagehash.dhash),
-	('whash-haar', imagehash.whash),
-	('whash-db4', lambda img: imagehash.whash(img, mode='db4')),
 	('colorhash', imagehash.colorhash),
 ]
 
